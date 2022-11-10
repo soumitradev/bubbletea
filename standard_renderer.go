@@ -365,6 +365,8 @@ func (r *standardRenderer) enableMouseCellMotion() {
 	defer r.mtx.Unlock()
 
 	r.out.EnableMouseCellMotion()
+	// mouse mode (1006) is a no-op if the terminal doesn't support it.
+	r.out.EnableMouseExtendedMode()
 }
 
 func (r *standardRenderer) disableMouseCellMotion() {
@@ -372,6 +374,7 @@ func (r *standardRenderer) disableMouseCellMotion() {
 	defer r.mtx.Unlock()
 
 	r.out.DisableMouseCellMotion()
+	r.out.DisableMouseExtendedMode()
 }
 
 func (r *standardRenderer) enableMouseAllMotion() {
@@ -379,6 +382,8 @@ func (r *standardRenderer) enableMouseAllMotion() {
 	defer r.mtx.Unlock()
 
 	r.out.EnableMouseAllMotion()
+	// mouse mode (1006) is a no-op if the terminal doesn't support it.
+	r.out.EnableMouseExtendedMode()
 }
 
 func (r *standardRenderer) disableMouseAllMotion() {
@@ -386,6 +391,7 @@ func (r *standardRenderer) disableMouseAllMotion() {
 	defer r.mtx.Unlock()
 
 	r.out.DisableMouseAllMotion()
+	r.out.DisableMouseExtendedMode()
 }
 
 // setIgnoredLines specifies lines not to be touched by the standard Bubble Tea

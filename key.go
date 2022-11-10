@@ -581,7 +581,7 @@ func readInputs(input io.Reader) ([]Msg, error) {
 
 	// Check if it's a mouse event. For now we're parsing X10-type mouse events
 	// only.
-	mouseEvent, err := parseX10MouseEvents(b)
+	mouseEvent, err := parseMouseEvents(b)
 	if err == nil {
 		var m []Msg
 		for _, v := range mouseEvent {

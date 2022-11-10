@@ -38,17 +38,23 @@ type renderer interface {
 
 	// enableMouseCellMotion enables mouse click, release, wheel and motion
 	// events if a mouse button is pressed (i.e., drag events).
+	//
+	// This will try to use the "1006" extended mode if available, falling back
+	// to "1002" if not.
 	enableMouseCellMotion()
 
-	// DisableMouseCellMotion disables Mouse Cell Motion tracking.
+	// disableMouseCellMotion disables Mouse Cell Motion tracking.
 	disableMouseCellMotion()
 
-	// EnableMouseAllMotion enables mouse click, release, wheel and motion
+	// enableMouseAllMotion enables mouse click, release, wheel and motion
 	// events, regardless of whether a mouse button is pressed. Many modern
 	// terminals support this, but not all.
+	//
+	// This will try to use the "1006" extended mode if available, falling back
+	// to "1003" if not.
 	enableMouseAllMotion()
 
-	// DisableMouseAllMotion disables All Motion mouse tracking.
+	// disableMouseAllMotion disables All Motion mouse tracking.
 	disableMouseAllMotion()
 }
 
